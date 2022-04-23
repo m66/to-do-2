@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { H1 } from "./H1/H1";
+import { P } from "./P/P";
+
+function Image() {
+  return (
+    <div>
+      <img
+        src="https://images.pexels.com/photos/3680219/pexels-photo-3680219.jpeg?cs=srgb&dl=pexels-lukas-rodriguez-3680219.jpg&fm=jpg"
+        alt=""
+      />
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" id="barev">
+      <div className="info-section">
+        <H1 />
+        <H1 />
+        <H1 />
+
+        <P />
+        <Image />
+      </div>
     </div>
   );
 }

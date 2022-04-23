@@ -6,7 +6,7 @@ function Image() {
     <div>
       <img
         src="https://images.pexels.com/photos/3680219/pexels-photo-3680219.jpeg?cs=srgb&dl=pexels-lukas-rodriguez-3680219.jpg&fm=jpg"
-        alt=""
+        alt="image"
       />
     </div>
   );

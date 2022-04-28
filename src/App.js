@@ -13,18 +13,7 @@ function Image() {
 }
 
 function App() {
-  return (
-    <div className="App" id="barev">
-      <div className="info-section">
-        <H1 />
-        <H1 />
-        <H1 />
-
-        <P />
-        <Image />
-      </div>
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;

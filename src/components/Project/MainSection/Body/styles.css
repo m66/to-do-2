@@ -1,0 +1,5 @@
+.main-section-body {
+  width: 100%;
+  height: calc(100% - 200px);
+  background-color: grey;
+}

@@ -11,6 +11,8 @@ export const NavItem = ({ label, link, isActive, onClick }) => {
   );
 };
 
+/* This is for students */
+
 // export const NavItem = ({ label, link, isActive, onClick }) => {
 //   const classList = ["nav-item"];
 //   if (isActive) {

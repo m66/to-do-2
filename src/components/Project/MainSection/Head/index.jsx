@@ -1,4 +1,9 @@
 import "./styles.css";
-export const Head = () => {
-  return <div className="main-section-head"></div>;
+import { HeadRight } from "./HeadRight";
+export const Head = ({ setTasks }) => {
+  return (
+    <div className="main-section-head">
+      <HeadRight setTasks={setTasks} />
+    </div>
+  );
 };

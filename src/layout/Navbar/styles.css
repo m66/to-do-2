@@ -1,10 +1,12 @@
 .navbar {
   height: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: end !important;
+  align-items: flex-end;
+  padding-bottom: 0;
 }
 .navbar-list {
   display: flex;
   align-items: center;
-  height: 100%;
+  margin-bottom: 0;
 }

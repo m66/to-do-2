@@ -20,7 +20,7 @@ export const MainSection = () => {
   return (
     <div className="main-section">
       <Head setTasks={setTasks} />
-      <Body tasks={tasks} />
+      <Body setTasks={setTasks} tasks={tasks} />
     </div>
   );
 };

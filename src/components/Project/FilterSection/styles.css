@@ -1,5 +1,14 @@
 .filter-section {
   width: 25%;
-  height: 100%;
-  background-color: coral;
+  margin: 20px 0;
+  box-shadow: 0px 0px 9px 7px grey;
+  padding: 35px 0;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.react-datepicker-wrapper {
+  margin: 5px;
+  width: auto !important;
 }

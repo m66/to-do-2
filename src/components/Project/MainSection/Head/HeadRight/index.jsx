@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Input } from "reactstrap";
+import { BACKEND_URL } from "../../../../../consts";
 import { SharedModal } from "../../../../../shared/SharedModal";
 import "./styles.css";
 
@@ -14,8 +15,27 @@ const SortSelect = () => {
   );
 };
 
-const SearchInput = () => {
-  return <Input type="search" placeholder="Search" name="search"></Input>;
+// const onSearch = (e) => {
+//   fetch(`${BACKEND_URL}/task`)
+//     .then((res) => res.json())
+//     .then((data) =>
+//       setTasks(data.filter((task) => task.title.includes === e.target.value))
+//     );
+// };
+
+const SearchInput = ({ setTasks }) => {
+  return (
+    <Input
+      type="search"
+      placeholder="Search"
+      name="search"
+      onChange={(e) => {
+        fetch(`${BACKEND_URL}/task?search=${e.target.value}`)
+          .then((res) => res.json())
+          .then((data) => setTasks(data));
+      }}
+    ></Input>
+  );
 };
 
 export const HeadRight = ({ setTasks }) => {
@@ -39,7 +59,7 @@ export const HeadRight = ({ setTasks }) => {
         Add New Task
       </Button>
       <SortSelect />
-      <SearchInput />
+      <SearchInput setTasks={setTasks} />
       {isShowAddTaskModal && (
         <SharedModal
           onClose={() => {

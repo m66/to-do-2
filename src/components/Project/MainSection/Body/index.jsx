@@ -1,21 +1,11 @@
 import { CardComponent } from "../../CardComponent";
 import "./styles.css";
 
-//componentDidMount (Works only one time)
-// useEffect(() => {
-
-// }, []);
-
-//componentDidUpdate (Works after any update)
-// useEffect(() => {
-
-// });
-
-export const Body = ({ tasks }) => {
+export const Body = ({ tasks, setTasks }) => {
   return (
     <div className="main-section-body">
       {tasks.map((todo) => {
-        return <CardComponent key={todo._id} todo={todo} />;
+        return <CardComponent key={todo._id} todo={todo} setTasks={setTasks} />;
       })}
     </div>
   );

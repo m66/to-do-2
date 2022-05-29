@@ -1,0 +1,35 @@
+.error-page {
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-page > div {
+    zoom: 1.2;
+}
+
+.error-page {
+    background-image: url(../../images/wallpapersden.jpg);
+    /* background-position: center;
+    background-size: contain; */
+    color: #fff;
+}
+
+.error-page h1 {
+    font-size: 50px;
+}
+
+.error-page button {
+    padding: 5px 15px;
+    color: #fff;
+    background-color: red;
+    border: transparent;
+    border-radius: 15px;
+}
+
+.error-page button:hover {
+    background-color: rgb(122, 3, 3);
+}

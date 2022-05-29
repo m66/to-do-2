@@ -1,0 +1,87 @@
+.loading-field {
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-task-page {
+  height: 100%;
+  width: 100%;
+  padding: 0 150px;
+  background: url("../../images/wallpapersden.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-task-content {
+  min-width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.single-task-content h1 {
+  width: 100%;
+  padding: 15px;
+  color: #fff;
+  background-color: black;
+  border: 2px solid rgb(255, 0, 0);
+  text-align: center;
+}
+
+.single-task-general-info {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid rgb(255, 0, 0);
+  padding: 15px;
+  display: flex;
+}
+
+.single-task-general-info img {
+  max-height: 300px;
+  background-color: #000;
+}
+
+.single-task-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 2px solid red;
+  padding-left: 20px;
+}
+
+.description-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.description-text .task-info-field-title {
+    text-align: center !important;
+}
+
+.task-info-field-title {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  color: red;
+}
+
+#changedText {
+  display: flex;
+  align-items: center;
+  max-width: 250px;
+}
+
+.back-navigate {
+  border: 1px solid red;
+  background-color: #000;
+  color: red;
+}
+
+.back-navigate:hover {
+  border: 1px solid black;
+  background-color: red;
+  color: black;
+}

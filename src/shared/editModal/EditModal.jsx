@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import {
   Button,
   Form,
@@ -10,6 +10,7 @@ import {
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { isRequired, maxLength20, minLength3 } from "../../helpers/validations";
 import { BACKEND_URL } from "../../consts";
+import DatePicker from "react-datepicker";
 
 const EditTaskForm = ({ onSubmitCallback, setTasks, editableState }) => {
   const [inputsData, setInputsData] = useState({
@@ -22,6 +23,11 @@ const EditTaskForm = ({ onSubmitCallback, setTasks, editableState }) => {
       value: editableState.description,
       error: undefined,
       validations: [isRequired, minLength3, maxLength20],
+    },
+    date: {
+      value: editableState.date,
+      error: undefined,
+      validations: [isRequired],
     },
   });
 
@@ -36,8 +42,6 @@ const EditTaskForm = ({ onSubmitCallback, setTasks, editableState }) => {
       title,
       description,
     };
-
-    console.log(formData);
 
     fetch(`${BACKEND_URL}/task/${editableState._id}`, {
       method: "PUT",
@@ -119,6 +123,23 @@ const EditTaskForm = ({ onSubmitCallback, setTasks, editableState }) => {
           <FormFeedback>{inputsData.description.error}</FormFeedback>
         )}
       </FormGroup>
+      <FormGroup>
+        <Label for="dateId">Dead-Line</Label>
+        <DatePicker
+          // value={inputsData.date.value}
+          id="dateId"
+          name="date"
+          selected={inputsData.date.value}
+          // onChange={(selectrdDate) => setDeadLineDate(selectrdDate)}
+          dateFormat="yyyy-mm-dd"
+          minDate={new Date()}
+          filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
+          isClearable
+        />
+        {!!inputsData.date.error && (
+          <FormFeedback>{inputsData.date.error}</FormFeedback>
+        )}
+      </FormGroup>
       {/* Date Picker */}
       <Button color="primary" onClick={onSubmit}>
         Edit Task
@@ -131,7 +152,7 @@ const EditTaskForm = ({ onSubmitCallback, setTasks, editableState }) => {
 export const EditModal = ({ onClose, setTasks, editableState }) => {
   return (
     <Modal toggle={onClose} isOpen={true}>
-      <ModalHeader toggle={onClose}>Modal title</ModalHeader>
+      <ModalHeader toggle={onClose}>Edit Task</ModalHeader>
       <ModalBody>
         <EditTaskForm
           editableState={editableState}

@@ -1,6 +1,5 @@
 .main-section-body {
-  width: 95%;
-  /* height: calc(100% - 200px); */
+  /* width: 95%; */
   margin: 20px;
   display: flex;
   justify-content: space-around;
@@ -8,4 +7,9 @@
   flex-wrap: wrap;
   box-shadow: 0px 0px 9px 7px grey;
   padding-top: 42px;
+}
+
+.main-section-body h2 {
+  width: 100%;
+  text-align: center;
 }

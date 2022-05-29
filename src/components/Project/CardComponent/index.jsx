@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -7,87 +7,73 @@ import {
   CardText,
   CardTitle,
 } from "reactstrap";
-import { BACKEND_URL } from "../../../consts";
 import { EditModal } from "../../../shared/editModal/EditModal";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faCheckCircle} from '@fortawesome/free-solid-svg-icons'
 
-export const CardComponent = ({
-  todo,
-  todo: { title, description, created_at, _id, status },
-  setTasks,
-}) => {
-  const [editableState, setEditableState] = useState(null);
-  const [taskStatus, setTaskStatus] = useState(status);
-  const [isShowAddTaskModal, setIsShowAddTaskModal] = useState(false);
+export const CardComponent = memo(
+  ({
+    onDone,
+    editableState,
+    onEdit,
+    isShowAddTaskModal,
+    setIsShowAddTaskModal,
+    onDelete,
+    todo: { title, description, created_at, _id, status },
+    todo,
+    setTasks,
+  }) => {
+    const [taskStatus, setTaskStatus] = useState(status);
+    console.log("rerender");
 
-  const handleBtnClick = () => {
-    if (isShowAddTaskModal) {
-      setIsShowAddTaskModal(false);
-      setEditableState(null);
-    } else {
-      setIsShowAddTaskModal(true);
-      setEditableState(todo);
-    }
-  };
-
-  const onDelete = () => {
-    fetch(`${BACKEND_URL}/task/${_id}`, {
-      method: "DELETE",
-    }).then(() => {
-      setTasks((prev) => prev.filter((task) => task._id !== _id));
-    });
-  };
-
-  const onDone = () => {
-    fetch(`${BACKEND_URL}/task/${_id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: "done" }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setTaskStatus(data.status);
-      });
-  };
-
-  return (
-    <Card style={{ width: "300px", minHeight: "300px", marginBottom: "20px" }}>
-      <CardImg
-        alt="Card image cap"
-        src="https://picsum.photos/318/180"
-        top
-        width="100%"
-      />
-      <CardBody>
-        <CardTitle tag="h5">{title}</CardTitle>
-        <CardText>{description}</CardText>
-        <CardText>{created_at.toLocaleString().split("T").join(" ")}</CardText>
-        <Button
-          onClick={onDone}
-          style={{ background: taskStatus === "active" ? "orange" : "green" }}
-          disabled={taskStatus === "done" ? "disabled" : ""}
-        >
-          {taskStatus === "active" ? "Done" : "Completed"}
-        </Button>
-        {"  "}
-        <Button style={{ background: "red" }} onClick={onDelete}>
-          Delete
-        </Button>
-        {"  "}
-        <Button style={{ background: "blueviolet" }} onClick={handleBtnClick}>
-          Edit
-        </Button>
-        {isShowAddTaskModal && (
-          <EditModal
-            editableState={editableState}
-            onClose={() => {
-              setIsShowAddTaskModal(false);
-            }}
-            setTasks={setTasks}
-          />
-        )}
-      </CardBody>
-    </Card>
-  );
-};
+    return (
+      <Card
+        style={{ width: "300px", minHeight: "300px", marginBottom: "20px", position: "relative" }}
+      >
+        {status === 'done' && <div style={{position: 'absolute', right: '-10px', top: '-20px', fontSize: '35px', color: 'green'}} className="onDone-icon"><FontAwesomeIcon icon={faCheckCircle} /></div>}
+        <CardImg
+          alt="Card image cap"
+          src="https://picsum.photos/318/180"
+          top
+          width="100%"
+        />
+        <CardBody>
+          <CardTitle tag="h5">
+            <Link to={_id}>{title}</Link>
+          </CardTitle>
+          <CardText>{description.length > 30 ? `${description.slice(0, 30)}...`: description}</CardText>
+          <CardText>
+            {created_at.toLocaleString().split("T").join(" ")}
+          </CardText>
+          <Button
+            onClick={() => onDone(_id, status, taskStatus, setTaskStatus)}
+            style={{ background: taskStatus === "active" ? "orange" : "green" }}
+          >
+            {taskStatus === "active" ? "Done" : "Completed"}
+          </Button>
+          {"  "}
+          <Button style={{ background: "red" }} onClick={() => onDelete(_id)}>
+            Delete
+          </Button>
+          {"  "}
+          <Button
+            style={{ background: "blueviolet" }}
+            onClick={() => onEdit(todo)}
+          >
+            Edit
+          </Button>
+          {isShowAddTaskModal && (
+            <EditModal
+              editableState={editableState}
+              onClose={() => {
+                setIsShowAddTaskModal(false);
+              }}
+              setTasks={setTasks}
+            />
+          )}
+        </CardBody>
+      </Card>
+    );
+  }
+);

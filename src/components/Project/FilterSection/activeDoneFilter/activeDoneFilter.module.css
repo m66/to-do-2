@@ -1,0 +1,21 @@
+.content {
+    margin: 25px 0;
+}
+
+.active, .active:focus {
+    margin-right: 5px;
+    background-color: orange !important;
+}
+
+.active:hover {
+    background-color: rgba(255, 166, 0, 0.8) !important;
+}
+
+.done, .done:focus {
+    margin-right: 5px;
+    background-color: green !important;
+}
+
+.done:hover {
+    background-color: rgba(0, 128, 0, 0.8) !important;
+}

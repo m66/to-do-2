@@ -1,16 +1,18 @@
 .nav-item {
   font-size: 20px;
   color: white;
-  margin-left: 20px;
   cursor: pointer;
-  padding: 0px 9px;
+  padding: 5px 12px;
   border-radius: 5px 5px 0 0;
 }
 .nav-item:hover {
   color: rgb(166, 84, 243);
 }
 
-.nav-item.active {
-  color: blueviolet;
-  background-color: rgb(126, 126, 126);
+.activeLink {
+  padding: 5px 15px;
+  border: 1px solid red;
+  border-radius: 5px;
+  font-size: 20px;
+  color: rgb(255, 0, 0);
 }

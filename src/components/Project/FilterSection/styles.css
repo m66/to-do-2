@@ -1,11 +1,18 @@
 .filter-section {
-  width: 25%;
+  min-width: 320px;
+  max-width: 350px;
   margin: 20px 0;
   box-shadow: 0px 0px 9px 7px grey;
-  padding: 35px 0;
+  padding: 35px 10px;
   display: flex;
-  justify-content: center;
-  align-items: start;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.filter-section tr td:first-child {
+  text-align: end;
+  padding-right: 5px;
 }
 
 .react-datepicker-wrapper {

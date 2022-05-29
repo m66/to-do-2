@@ -1,0 +1,106 @@
+.about-me {
+    width: 100vw;
+    height: 90vh;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../images/wallpapersden.jpg');
+}
+
+.about-me-content {
+    width: 75vw;
+    height: 80vh;
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid red;
+    border-radius: 18px;
+    user-select: none;
+    box-shadow: 0px 0px 9px 7px red;
+    zoom: 0.9;
+}
+
+.info-wrapper {
+    padding: 25px;
+    display: flex; 
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    margin-right: 25px;
+}
+
+.social-links div {
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-links>div:hover {
+    background-color: red;
+    box-shadow: 0px 0px 9px 7px red;
+    border: transparent;
+}
+
+.social-links svg {
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+}
+/* .social-links svg:hover {
+    color: red;
+} */
+.info-wrapper-parts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+}
+
+.info-wrapper-parts h1 {
+    color:#fd3131
+
+}
+
+.info-wrapper-parts p {
+    text-align: center;
+    color: rgb(168, 168, 168);
+}
+
+.nav-link-btns button {
+    padding: 5px 15px;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+.nav-link-btns button:hover {
+    background-color: rgb(43, 43, 43);
+}
+
+.info-img {
+    height: 100%;
+    background: #f3ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+}
+
+.info-img img {
+    width: 350px;
+    border-radius: 25px;
+}

@@ -2,11 +2,20 @@
   height: 100%;
   display: flex;
   justify-content: end !important;
-  align-items: flex-end;
-  padding-bottom: 0;
+  /* align-items: flex-end !important;
+  padding-bottom: 0 !important; */
 }
 .navbar-list {
   display: flex;
   align-items: center;
   margin-bottom: 0;
+}
+
+.navbar-list a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-list a:focus {
+  color: red;
 }

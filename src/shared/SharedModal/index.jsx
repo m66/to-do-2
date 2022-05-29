@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import {
   Button,
   Form,
@@ -10,11 +10,11 @@ import {
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { isRequired, maxLength20, minLength3 } from "../../helpers/validations";
 import { BACKEND_URL } from "../../consts";
+import DatePicker from "react-datepicker";
+import moment from "moment";
 
 const AddTaskForm = ({ onSubmitCallback, setTasks }) => {
-  const titleInputRef = useRef(null);
-  const descriptionInputRef = useRef(null);
-
+  const [deadLineDate, setDeadLineDate] = useState(new Date());
   const [inputsData, setInputsData] = useState({
     title: {
       value: "",
@@ -25,6 +25,11 @@ const AddTaskForm = ({ onSubmitCallback, setTasks }) => {
       value: "",
       error: undefined,
       validations: [isRequired, minLength3, maxLength20],
+    },
+    date: {
+      value: "",
+      error: undefined,
+      validations: [isRequired],
     },
   });
 
@@ -38,6 +43,7 @@ const AddTaskForm = ({ onSubmitCallback, setTasks }) => {
     const formData = {
       title,
       description,
+      date: moment(deadLineDate).format("YYYY-MM-DD"),
     };
 
     fetch(`${BACKEND_URL}/task`, {
@@ -93,7 +99,6 @@ const AddTaskForm = ({ onSubmitCallback, setTasks }) => {
           name="title"
           placeholder="Task title"
           type="text"
-          innerRef={titleInputRef}
           onChange={handleChange}
           invalid={!!inputsData.title.error}
         />
@@ -106,14 +111,29 @@ const AddTaskForm = ({ onSubmitCallback, setTasks }) => {
         <Input
           id="descriptionId"
           name="description"
+          invalid={!!inputsData.description.error}
           placeholder="Task descriptionId"
           type="text"
-          innerRef={descriptionInputRef}
           onChange={handleChange}
-          invalid={!!inputsData.description.error}
         />
         {!!inputsData.description.error && (
           <FormFeedback>{inputsData.description.error}</FormFeedback>
+        )}
+      </FormGroup>
+      <FormGroup>
+        <Label for="dateId">Dead-Line</Label>
+        <DatePicker
+          id="dateId"
+          name="date"
+          selected={deadLineDate}
+          onChange={(selectrdDate) => setDeadLineDate(selectrdDate)}
+          dateFormat="yyyy-mm-dd"
+          minDate={new Date()}
+          filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
+          isClearable
+        />
+        {!!inputsData.date.error && (
+          <FormFeedback>{inputsData.date.error}</FormFeedback>
         )}
       </FormGroup>
       {/* Date Picker */}
@@ -128,7 +148,7 @@ const AddTaskForm = ({ onSubmitCallback, setTasks }) => {
 export const SharedModal = ({ onClose, setTasks }) => {
   return (
     <Modal toggle={onClose} isOpen={true}>
-      <ModalHeader toggle={onClose}>Modal title</ModalHeader>
+      <ModalHeader toggle={onClose}>Add new task</ModalHeader>
       <ModalBody>
         <AddTaskForm onSubmitCallback={onClose} setTasks={setTasks} />
       </ModalBody>

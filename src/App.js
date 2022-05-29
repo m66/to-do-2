@@ -1,13 +1,13 @@
 import { Header } from "./layout/Header";
 import { ProjectPage } from "./pages/Project";
-import { BACKEND_URL } from "./consts";
+import MainRoutes from "./routes/mainRoutes/MainRoutes";
 
 function App() {
-  console.log(BACKEND_URL);
   return (
     <div className="App">
       <Header />
-      <ProjectPage />
+      {/* <ProjectPage /> */}
+      <MainRoutes className='main-routes-container'/>
     </div>
   );
 }

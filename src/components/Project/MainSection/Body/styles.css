@@ -1,3 +1,4 @@
+
 .main-section-body {
   /* width: 95%; */
   margin: 20px;
@@ -7,9 +8,33 @@
   flex-wrap: wrap;
   box-shadow: 0px 0px 9px 7px grey;
   padding-top: 42px;
+  position: relative;
 }
 
 .main-section-body h2 {
   width: 100%;
   text-align: center;
+}
+
+.delete-all-selected {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9;
+}
+
+.trash-all-btn {
+  color: rgb(255, 0, 0);
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  font-size: 35px;
+  border: 2px solid rgb(255, 0, 0);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.trash-all-btn:hover {
+  color: black;
+  background-color: rgb(255, 0, 0);
+  border-color: black;
 }

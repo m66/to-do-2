@@ -1,0 +1,9 @@
+.delete-checkbox {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
+.delete-checkbox input {
+    zoom: 1.5;
+}

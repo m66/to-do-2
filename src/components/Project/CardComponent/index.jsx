@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useState } from "react";
 import {
   Button,
   Card,
@@ -10,10 +10,12 @@ import {
 import { EditModal } from "../../../shared/editModal/EditModal";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCheckCircle} from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import "./cardComponent.css";
 
 export const CardComponent = memo(
   ({
+    handleDeletingCards,
     onDone,
     editableState,
     onEdit,
@@ -25,13 +27,35 @@ export const CardComponent = memo(
     setTasks,
   }) => {
     const [taskStatus, setTaskStatus] = useState(status);
+
     console.log("rerender");
 
     return (
       <Card
-        style={{ width: "300px", minHeight: "300px", marginBottom: "20px", position: "relative" }}
+        style={{
+          width: "300px",
+          minHeight: "300px",
+          marginBottom: "20px",
+          position: "relative",
+        }}
       >
-        {status === 'done' && <div style={{position: 'absolute', right: '-10px', top: '-20px', fontSize: '35px', color: 'green'}} className="onDone-icon"><FontAwesomeIcon icon={faCheckCircle} /></div>}
+        <div className="delete-checkbox">
+          <input type="checkbox" onClick={() => handleDeletingCards(_id)} />
+        </div>
+        {status === "done" && (
+          <div
+            style={{
+              position: "absolute",
+              right: "-10px",
+              top: "-20px",
+              fontSize: "35px",
+              color: "green",
+            }}
+            className="onDone-icon"
+          >
+            <FontAwesomeIcon icon={faCheckCircle} />
+          </div>
+        )}
         <CardImg
           alt="Card image cap"
           src="https://picsum.photos/318/180"
@@ -42,7 +66,11 @@ export const CardComponent = memo(
           <CardTitle tag="h5">
             <Link to={_id}>{title}</Link>
           </CardTitle>
-          <CardText>{description.length > 30 ? `${description.slice(0, 30)}...`: description}</CardText>
+          <CardText>
+            {description.length > 30
+              ? `${description.slice(0, 30)}...`
+              : description}
+          </CardText>
           <CardText>
             {created_at.toLocaleString().split("T").join(" ")}
           </CardText>
